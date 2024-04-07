@@ -23,7 +23,7 @@ import numpy as np
 from tensorflow.python.ops import rnn_cell_impl
 
 
-def modrelu(inputs, bias, cplex=True, dtypec=tf.complex128):
+def modrelu(inputs, bias, cplex=True, dtypec=np.complex128):
     """
     modReLU activation function
     """
@@ -256,7 +256,7 @@ class EUNNCell(rnn_cell_impl.RNNCell):
                 capacity=2, 
                 fft=False, 
                 cplex=True,
-                dtype=tf.float64,
+                dtype=np.float64,
                 reuse=None,
                 ln=0):
         """Initializes the EUNN  cell.
