@@ -24,7 +24,7 @@ export OMP_NUM_THREADS=12
 
 for V in 10
 do
-for ALPHA in 0.9
+for ALPHA in 0.5
 do
 for BETA in 1e-7
 do
@@ -48,7 +48,7 @@ python RUN.py hqrc \
     --dynamics_length 40 \
     --it_pred_length 300 \
     --iterative_update_length 0 \
-    --n_tests 1 \
+    --n_tests 3 \
     --solver pinv \
     --augment 0 \
     --gamma 0.0 \

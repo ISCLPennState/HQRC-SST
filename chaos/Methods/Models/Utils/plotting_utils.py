@@ -145,10 +145,11 @@ def plotIterativePrediction(model, set_name, target, prediction, error, nerror, 
         
         norm_target_dim = scaleData(target_dim)
         norm_out_dim = scaleData(out_dim)
-        
+        err_dim = np.abs(norm_out_dim-norm_target_dim)
         # Plot target and output arrays
         axs[dim].plot(norm_target_dim, label='Target')
         axs[dim].plot(norm_out_dim, label='Prediction')
+        axs[dim].fill_between(range(len(norm_out_dim)), norm_out_dim - err_dim, norm_out_dim + err_dim, alpha=0.2, label='Error')
         
         # Set y-axis limits to [0, 1]
         axs[dim].set_ylim(0, 1)
@@ -203,8 +204,8 @@ def plotIterativePrediction(model, set_name, target, prediction, error, nerror, 
     if model.input_dim >=3: 
         createTestingContours(model, target, prediction, dt, ic_idx, set_name)
         # Extract the first three dimensions
-        target_3d = temp_target[:, :3]
-        out_3d = temp_out[:, :3]
+        target_3d = temp_target[:, 2:]
+        out_3d = temp_out[:, 2:]
 
         # Create a 3D plot
         fig = plt.figure(figsize=(10, 8))
@@ -215,9 +216,9 @@ def plotIterativePrediction(model, set_name, target, prediction, error, nerror, 
         ax.plot(out_3d[:, 0], out_3d[:, 1], out_3d[:, 2], label='Prediction')
 
         # Set labels and legend
-        ax.set_xlabel('Dimension 1')
-        ax.set_ylabel('Dimension 2')
-        ax.set_zlabel('Dimension 3')
+        ax.set_xlabel('Dimension 3')
+        ax.set_ylabel('Dimension 4')
+        ax.set_zlabel('Dimension 5')
         ax.legend()
 
         # Set plot title

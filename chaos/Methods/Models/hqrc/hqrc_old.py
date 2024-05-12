@@ -61,6 +61,8 @@ def linear_combine(u, states, coeffs):
     v = min(v, 1.0)
     total = v * u
     total += np.dot(np.array(states, dtype=np.float64).flatten(), np.array(coeffs, dtype=np.float64).flatten())
+    total = max(total,0.0)#
+    total = min(total,1.0)#
     return total
 
 def scale_linear_combine(u, states, coeffs, bias):
@@ -279,6 +281,7 @@ class hqrc(object):
                 #value = softmax_linear_combine(value, previous_states, self.coeffs[i])
                 scaled_coeffs = self.coeffs[i] * self.alpha
                 value = scale_linear_combine(value, prev_states, scaled_coeffs, self.bias)#u0 fed here?
+                print("yes")
             
             # Replace the density matrix
             rho = self.P0op @ rho @ self.P0op + self.Xop[0] @ self.P1op @ rho @ self.P1op @ self.Xop[0]
@@ -288,6 +291,7 @@ class hqrc(object):
             # rho = (1+value)/2 * rho + (1-value)/2 *self.Xop[0] @ rho @ self.Xop[0]
             
             # for input in [0, 1]
+            print("value=",value)
             rho = (1 - value) * rho + value * self.Xop[0] @ rho @ self.Xop[0]
             current_state = []
             for v in range(self.virtual_nodes):

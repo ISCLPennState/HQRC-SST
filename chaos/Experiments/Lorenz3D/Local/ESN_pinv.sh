@@ -3,28 +3,28 @@
 
 cd ../../../Methods
 
-for UNITS in 500 1000
+for UNITS in 40
 do
 for BETA in 1e-7
 do
-python3 RUN.py esn \
+python RUN.py esn \
 --mode all \
 --display_output 1 \
---system_name Lorenz3D \
+--system_name SST \
 --write_to_log 1 \
---N 100000 \
---N_used 10000 \
---RDIM 1 \
---noise_level 1 \
+--N 427 \
+--N_used 427 \
+--RDIM 5 \
+--noise_level 0 \
 --scaler Standard \
 --n_nodes $UNITS \
 --degree 10 \
 --radius 0.9 \
 --sigma_input 1 \
 --reg $BETA \
---dynamics_length 2000 \
---it_pred_length 1000 \
---n_tests 2 \
+--dynamics_length 40 \
+--it_pred_length 300 \
+--n_tests 3 \
 --solver pinv \
 --number_of_epochs 1000000 \
 --learning_rate 0.001 \

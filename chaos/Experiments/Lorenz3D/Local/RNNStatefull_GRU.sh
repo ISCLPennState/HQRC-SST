@@ -5,12 +5,14 @@ cd ../../../Methods
 
 for RDIM in 5
 do
-for SS in 100
+for SS in 80 120 250 500 1000 2000
 do
 for SL in 16
 do
 for KP in 1.0
 do
+for L in 1 2 3
+do 
     python RUN.py rnn_statefull \
     --mode all \
     --display_output 1 \
@@ -19,7 +21,7 @@ do
     --N 427 \
     --N_used 427 \
     --RDIM $RDIM \
-    --noise_level 1 \
+    --noise_level 0 \
     --rnn_cell_type gru \
     --unitary_cplex 1 \
     --unitary_capacity 2 \
@@ -27,10 +29,10 @@ do
     --scaler standard \
     --initializer xavier \
     --sequence_length $SL \
-    --hidden_state_propagation_length 100 \
+    --hidden_state_propagation_length 70 \
     --prediction_length $SL \
     --rnn_activation_str tanh \
-    --rnn_num_layers 1 \
+    --rnn_num_layers $L \
     --rnn_size_layers $SS \
     --dropout_keep_prob $KP \
     --zoneout_keep_prob $KP \
@@ -43,8 +45,9 @@ do
     --learning_rate 0.001 \
     --train_val_ratio 0.8 \
     --it_pred_length 300 \
-    --n_tests 1 \
+    --n_tests 3 \
     --retrain 0
+done
 done
 done
 done

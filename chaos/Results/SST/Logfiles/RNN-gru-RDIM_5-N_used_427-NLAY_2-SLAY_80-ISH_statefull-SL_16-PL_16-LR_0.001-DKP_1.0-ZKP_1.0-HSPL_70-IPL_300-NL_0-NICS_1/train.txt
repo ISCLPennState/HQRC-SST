@@ -1,0 +1,3 @@
+model_name:RNN-gru-RDIM_5-N_used_427-NLAY_2-SLAY_80-ISH_statefull-SL_16-PL_16-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_70-IPL_300-NL_0-NICS_1:memory:348.48:total_training_time:2.56:n_model_parameters:59685:n_trainable_parameters:59685
+model_name:RNN-gru-RDIM_5-N_used_427-NLAY_2-SLAY_80-ISH_statefull-SL_16-PL_16-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_70-IPL_300-NL_0-NICS_1:memory:347.24:total_training_time:2.01:n_model_parameters:59685:n_trainable_parameters:59685
+model_name:RNN-gru-RDIM_5-N_used_427-NLAY_2-SLAY_80-ISH_statefull-SL_16-PL_16-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_70-IPL_300-NL_0-NICS_1:memory:346.96:total_training_time:1.99:n_model_parameters:59685:n_trainable_parameters:59685

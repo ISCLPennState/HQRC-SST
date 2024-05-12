@@ -1,0 +1,1 @@
+model_name:RNN-lstm-RDIM_5-N_used_427-NLAY_3-SLAY_2000-ISH_statefull-SL_16-PL_4-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_70-IPL_300-NL_0-NICS_3:n_tests:3.00:num_accurate_pred_005_avg_TEST:0.00:num_accurate_pred_050_avg_TEST:0.00:num_accurate_pred_005_avg_TRAIN:0.00:num_accurate_pred_050_avg_TRAIN:0.00:error_freq_TRAIN:31.77:error_freq_TEST:34.03

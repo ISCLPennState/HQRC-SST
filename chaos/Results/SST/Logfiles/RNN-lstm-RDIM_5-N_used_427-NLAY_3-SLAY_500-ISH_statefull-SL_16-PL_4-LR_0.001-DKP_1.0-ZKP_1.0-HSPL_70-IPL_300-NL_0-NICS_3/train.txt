@@ -1,0 +1,1 @@
+model_name:RNN-lstm-RDIM_5-N_used_427-NLAY_3-SLAY_500-ISH_statefull-SL_16-PL_4-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_70-IPL_300-NL_0-NICS_3:memory:511.93:total_training_time:4.31:n_model_parameters:5018505:n_trainable_parameters:5018505

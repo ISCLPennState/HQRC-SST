@@ -1,0 +1,1 @@
+model_name:ESN_pinv-RDIM_5-N_used_427-SIZE_500-D_10.0-RADIUS_0.9-SIGMA_1.0-DL_40-NL_0-IPL_300-REG_1e-07-NICS_1:memory:107.71:total_training_time:0.27:n_model_parameters:10000:n_trainable_parameters:2500

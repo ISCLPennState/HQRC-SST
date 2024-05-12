@@ -43,6 +43,10 @@ import signal
 
 tf_activations = {"relu": tf.nn.relu, "tanh": tf.tanh, "sigmoid": tf.sigmoid, "identity": tf.identity, "softplus":tf.nn.softplus, "softmax":tf.nn.softmax}
 tf_initializers = {"xavier": tf.contrib.layers.xavier_initializer(), "normal": tf.truncated_normal_initializer()}
+# tf_initializers = {
+#     "xavier": tf.keras.initializers.GlorotUniform(),  # Equivalent to Xavier initializer in TF 1.x
+#     "normal": tf.keras.initializers.TruncatedNormal(),  # Equivalent to truncated normal initializer in TF 1.x
+# }
 
 TFDTYPE = tf.float64
 TFCDTYPE = tf.complex128 if TFDTYPE==tf.float64 else tf.complex64
@@ -88,6 +92,23 @@ class rnn_statefull(object):
             outputs, last_state = tf.nn.dynamic_rnn(cell, input, dtype=self.cdtype_tf, initial_state=initial_hidden_state)
             outputs = tf.real(outputs)
         return outputs, last_state
+    # def rnn_layer(self, cell_type, name, inputs, input_size, num_hidden, activation_str, ln, initial_hidden_state):
+    #     # Define the cell based on the specified type
+    #     if cell_type == 'lstm':
+    #         cell = tf.keras.layers.LSTM(units=num_hidden, activation=activation_str, dropout=self._dropout_keep_prob, recurrent_dropout=1-self._zoneout_keep_prob, return_sequences=True, return_state=True)
+    #     elif cell_type == 'gru':
+    #         cell = tf.keras.layers.GRU(units=num_hidden, activation=activation_str, dropout=self._dropout_keep_prob, recurrent_dropout=1-self._zoneout_keep_prob, return_sequences=True, return_state=True)
+    #     elif cell_type == 'plain':
+    #         cell = tf.keras.layers.SimpleRNN(units=num_hidden, activation=activation_str, dropout=self._dropout_keep_prob, recurrent_dropout=1-self._zoneout_keep_prob, return_sequences=True, return_state=True)
+    #     elif cell_type == 'unitary':
+    #         raise NotImplementedError("Unitary cell type is not supported in TensorFlow 2.x.")
+    #     else:
+    #         raise ValueError("Invalid cell type provided!")
+
+    #     # Apply RNN cell to inputs
+    #     outputs, last_state = cell(inputs, initial_state=initial_hidden_state)
+
+    #     return outputs, last_state
 
     def mlp_unfolded_layer(self, name, input, input_size, layer_size, activation_str, ln):
         # input shape [k, P, H]
@@ -205,6 +226,17 @@ class rnn_statefull(object):
         self._dropout_keep_prob = tf.placeholder(self.dtype_tf, shape=())
         self._zoneout_keep_prob = tf.placeholder(self.dtype_tf, shape=())
         self._is_training = tf.placeholder(tf.bool, shape=())
+
+        # self.input 
+        # self.target  
+        # self._dropout_keep_prob 
+        # self._zoneout_keep_prob 
+        # self._is_training 
+        self.rnn_loss_train_vec = []
+        self.rnn_loss_val_vec = []
+        self.training_time = 0
+        self.rnn_min_val_error = 0
+        self.rnn_train_error = 0
 
         self.initial_hidden_states = []
         for ln in range(self.rnn_num_layers):
@@ -402,7 +434,9 @@ class rnn_statefull(object):
 
     def train(self):
         self.start_time = time.time()
-        signal.signal(signal.SIGUSR2, self.train_signal_handler)
+        # Check if SIGUSR2 is available before registering the signal handler
+        if hasattr(signal, 'SIGUSR2'):
+            signal.signal(signal.SIGUSR2, self.train_signal_handler)
         signal.signal(signal.SIGINT, self.train_signal_handler)
         try:
             input_dim = self.input_dim
