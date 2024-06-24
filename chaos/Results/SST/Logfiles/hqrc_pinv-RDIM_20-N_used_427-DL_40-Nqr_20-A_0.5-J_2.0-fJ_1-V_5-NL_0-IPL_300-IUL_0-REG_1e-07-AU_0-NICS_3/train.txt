@@ -1,0 +1,2 @@
+model_name:hqrc_pinv-RDIM_20-N_used_427-DL_40-Nqr_20-A_0.5-J_2.0-fJ_1-V_5-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.47:total_training_time:4.60:n_model_parameters:13140:n_trainable_parameters:8020
+model_name:hqrc_pinv-RDIM_20-N_used_427-DL_40-Nqr_20-A_0.5-J_2.0-fJ_1-V_5-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:118.21:total_training_time:39.97:n_model_parameters:93940:n_trainable_parameters:12020

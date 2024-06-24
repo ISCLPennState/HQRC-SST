@@ -5,3 +5,12 @@ model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IP
 model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:104.82:total_training_time:17.47:n_model_parameters:21985:n_trainable_parameters:1505
 model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.66:total_training_time:20.30:n_model_parameters:21985:n_trainable_parameters:1505
 model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.44:total_training_time:42.73:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.79:total_training_time:20.88:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.83:total_training_time:18.46:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.26:total_training_time:18.38:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.42:total_training_time:16.88:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:104.69:total_training_time:30.89:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.62:total_training_time:18.36:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:104.97:total_training_time:15.94:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.74:total_training_time:17.88:n_model_parameters:21985:n_trainable_parameters:1505
+model_name:hqrc_pinv-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:105.76:total_training_time:15.91:n_model_parameters:21985:n_trainable_parameters:1505

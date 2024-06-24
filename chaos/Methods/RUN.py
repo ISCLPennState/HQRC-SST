@@ -30,7 +30,7 @@ def getModel(params):
 		import esn as model
 		return model.esn(params)
 	elif params["model_name"] == "hqrc":
-		import hqrc_old as model ###
+		import hqrc_sparse as model ###
 		return model.hqrc(params)
 	elif params["model_name"] == "hqrc_innate":
 		import hqrc_innate as model
@@ -114,8 +114,8 @@ def main():
 	args_dict["fig_dir"] = global_params.fig_dir
 	args_dict["results_dir"] = global_params.results_dir
 	args_dict["logfile_dir"] = global_params.logfile_dir
-	args_dict["train_data_path"] = global_params.training_data_path.format(args.system_name, args.N)
-	args_dict["test_data_path"] = global_params.testing_data_path.format(args.system_name, args.N)##check for n_tests
+	args_dict["train_data_path"] = global_params.training_data_path.format("SST", args.N)#global_params.training_data_path.format(args.system_name, args.N)
+	args_dict["test_data_path"] = global_params.testing_data_path.format("SST", args.N)##check for n_tests
 	args_dict["worker_id"] = 0
 
 	runModel(args_dict)

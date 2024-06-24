@@ -33,8 +33,8 @@ global_params.global_utils_path = "./Models/Utils"
 global_params.saving_path = project_path + "/Results/{:s}"
 global_params.project_path = project_path
 
-global_params.training_data_path = project_path + "/Data/{:s}/Data/training_data_N{:}.pickle"#
-global_params.testing_data_path = project_path + "/Data/{:s}/Data/testing_data_N{:}.pickle"#
+global_params.training_data_path = project_path + "/Data/{:s}/Data/training_data_N{:}_sparse.pickle"#
+global_params.testing_data_path = project_path + "/Data/{:s}/Data/testing_data_N{:}_sparse.pickle"#
 
 # PATH TO LOAD THE PYTHON MODELS
 global_params.py_models_path = "./Models/{:}"

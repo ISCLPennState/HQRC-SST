@@ -55,18 +55,25 @@ def generate_list_rho(dim, n):
 def linear_combine(u, states, coeffs):
     #print('coeffs: ', coeffs.shape, states.shape)
     assert(len(coeffs) == len(states))
-    v = 1.0 - np.sum(coeffs)
+    v = 1.0 - np.sum(coeffs) #### (1-\alpha)
     assert(v <= 1.00001 and v >= -0.00001)
     v = max(v, 0.0)
     v = min(v, 1.0)
+    #print("v=",v)
+    #print("u=",u)
+    #print("v*u= ",v*u)
+    #print("W_Con*Z_{k-1}", np.dot(np.array(states, dtype=np.float64).flatten(), np.array(coeffs, dtype=np.float64).flatten()))
     total = v * u
     total += np.dot(np.array(states, dtype=np.float64).flatten(), np.array(coeffs, dtype=np.float64).flatten())
-    total = max(total,0.0)#
-    total = min(total,1.0)#
+    #print("total=", total)
+    #total = max(total,0.0)#
+    #total = min(total,1.0)#
     return total
 
 def scale_linear_combine(u, states, coeffs, bias):
     states = (states + bias) / (2.0 * bias)
+    if (not np.all((states >= 0) & (states <= 1))):
+        print("error, Z not in [0,1]")
     value = linear_combine(u, states, coeffs)
     #print(u.shape, 'scale linear combine', value)
     return value
@@ -275,13 +282,12 @@ class hqrc(object):
             if self.one_input <= 0 or i == 0:
                 value = input_val[i] * self.scale_input
             # Obtain values from previous layer
-            prev_states = self.previous_states
+            prev_states = self.previous_states ##Z_{k-1}
             #print('Size of prev states', len(prev_states))
             if nqrc > 1 and prev_states[0] is not None:
                 #value = softmax_linear_combine(value, previous_states, self.coeffs[i])
                 scaled_coeffs = self.coeffs[i] * self.alpha
-                value = scale_linear_combine(value, prev_states, scaled_coeffs, self.bias)#u0 fed here?
-                print("yes")
+                value = scale_linear_combine(value, prev_states, scaled_coeffs, self.bias)
             
             # Replace the density matrix
             rho = self.P0op @ rho @ self.P0op + self.Xop[0] @ self.P1op @ rho @ self.P1op @ self.Xop[0]
@@ -291,7 +297,6 @@ class hqrc(object):
             # rho = (1+value)/2 * rho + (1-value)/2 *self.Xop[0] @ rho @ self.Xop[0]
             
             # for input in [0, 1]
-            print("value=",value)
             rho = (1 - value) * rho + value * self.Xop[0] @ rho @ self.Xop[0]
             current_state = []
             for v in range(self.virtual_nodes):
@@ -329,10 +334,10 @@ class hqrc(object):
             input_val = input_sequence[time_step]
             local_rhos = self.__step_forward(local_rhos, input_val)
 
-            state = np.array(self.current_states.copy(), dtype=np.float64)
+            state = np.array(self.current_states.copy(), dtype=np.float64) #N_qrc x (N_qubits x V)
             state_list.append(state.flatten())
 
-        state_list = np.array(state_list, dtype=np.float64)
+        state_list = np.array(state_list, dtype=np.float64) #N_out x (N_total)
         self.last_rhos = local_rhos.copy()
 
         if predict:
@@ -342,9 +347,10 @@ class hqrc(object):
                 aug_state_list = self.augmentHiddenList(aug_state_list)
                 aug_state_list = np.array(aug_state_list, dtype=np.float64)
             
-            stacked_state = np.hstack( [aug_state_list, np.ones([input_length, 1])])
+            stacked_state = np.hstack( [aug_state_list, np.ones([input_length, 1])]) #this is the constant bias term
             #print('stacked state {}; Wout {}'.format(stacked_state.shape, self.W_out.shape))
             predict_sequence = stacked_state @ self.W_out
+            predict_sequence = np.clip(predict_sequence, 0, 1)
         
         return predict_sequence, state_list
 
@@ -374,8 +380,8 @@ class hqrc(object):
         else:
             X, Y = [], []
             # Augment data and using batch normalization
-            XTX = np.zeros((self.getReservoirSize() + 1, self.getReservoirSize() + 1))
-            XTY = np.zeros((self.getReservoirSize() + 1, output_sequence.shape[1]))
+            XTX = np.zeros((self.getReservoirSize() + 1, self.getReservoirSize() + 1)) # K=(N_out), X = K x (N_total+1)
+            XTY = np.zeros((self.getReservoirSize() + 1, output_sequence.shape[1])) # Y = K x N_qrc
             for t in range(state_list.shape[0]):
                 h = state_list[t]
                 h_aug = self.augmentHidden(h)
@@ -419,7 +425,7 @@ class hqrc(object):
                 raise ValueError("Undefined solver.")
 
         print('Finalizing weights Wout', W_out.shape)
-        self.W_out = W_out
+        self.W_out = W_out # N_total+1 x N_qrc
         self.n_trainable_parameters = np.size(self.W_out)
         self.n_model_parameters = np.size(self.Uops[0]) * self.nqrc + np.size(self.W_out)
         print("Number of trainable parameters: {}".format(self.n_trainable_parameters))
@@ -537,7 +543,10 @@ class hqrc(object):
                 state_aug = self.augmentHidden(state).reshape((1, -1))
                 stacked_state = np.hstack( [state_aug, np.ones([1, 1])])
                 #print('PREDICT stage: stacked state {}; Wout {}'.format(stacked_state.shape, self.W_out.shape))
-                out = stacked_state @ self.W_out
+
+                out = stacked_state @ self.W_out ###predicting one step at a time
+                out = np.clip(out, 0, 1)
+                # why is it discontinuous from warm up predictions?
                 prediction.append(out)
                 out = out.reshape(1, -1)
                 #if np.max(np.abs(out)) > 10:
@@ -612,7 +621,7 @@ class hqrc(object):
 
     def predictIndexes(self, input_sequence, ic_indexes, dt, set_name):
         n_tests = self.n_tests
-        input_sequence = self.scaler.scaleData(input_sequence, reuse=1)
+        input_sequence = self.scaler.scaleData(input_sequence,reuse=1) ##### reuse=1 omitted
         predictions_all = []
         truths_all = []
         rmse_all = []

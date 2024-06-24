@@ -1,0 +1,1 @@
+model_name:RNN-gru-RDIM_5-N_used_427-NLAY_1-SLAY_2000-ISH_statefull-SL_20-PL_20-LR_0.001-DKP_1.0-ZKP_1.0-HSPL_50-IPL_300-NL_0-NICS_3:memory:2089.50:total_training_time:841.09:n_model_parameters:12046005:n_trainable_parameters:12046005

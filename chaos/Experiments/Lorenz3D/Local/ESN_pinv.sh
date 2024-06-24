@@ -3,9 +3,9 @@
 
 cd ../../../Methods
 
-for UNITS in 40
+for UNITS in 200 300 500 1000
 do
-for BETA in 1e-7
+for BETA in 1e-4 1e-5 1e-6 1e-7
 do
 python RUN.py esn \
 --mode all \

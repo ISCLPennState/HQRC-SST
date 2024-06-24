@@ -149,7 +149,7 @@ def plotIterativePrediction(model, set_name, target, prediction, error, nerror, 
         # Plot target and output arrays
         axs[dim].plot(norm_target_dim, label='Target')
         axs[dim].plot(norm_out_dim, label='Prediction')
-        axs[dim].fill_between(range(len(norm_out_dim)), norm_out_dim - err_dim, norm_out_dim + err_dim, alpha=0.2, label='Error')
+        #axs[dim].fill_between(range(len(norm_out_dim)), norm_out_dim - err_dim, norm_out_dim + err_dim, alpha=0.2, label='Error')
         
         # Set y-axis limits to [0, 1]
         axs[dim].set_ylim(0, 1)

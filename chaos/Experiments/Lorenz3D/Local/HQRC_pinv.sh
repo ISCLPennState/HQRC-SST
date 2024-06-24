@@ -31,7 +31,7 @@ do
 python RUN.py hqrc \
     --mode all \
     --display_output 1 \
-    --system_name SST \
+    --system_name SST_sparse \
     --write_to_log 1 \
     --N 427 \
     --N_used 427 \
@@ -52,7 +52,8 @@ python RUN.py hqrc \
     --solver pinv \
     --augment 0 \
     --gamma 0.0 \
-    --non_diag_var 1.0
+    --non_diag_var 1.0 \
+    --sparse 0.0
 done
 done
 done

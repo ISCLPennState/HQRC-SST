@@ -3,15 +3,15 @@
 #change SS,it_pred_length,hspl,RDIM
 cd ../../../Methods
 
-for RDIM in 5
+for SL in 16 20
 do
 for SS in 80 120 250 500 1000 2000
 do
-for SL in 16
+for HSPL in 50 60 70 
 do
 for KP in 1.0
 do
-for L in 1 2 3
+for L in 1 2
 do 
     python RUN.py rnn_statefull \
     --mode all \
@@ -20,7 +20,7 @@ do
     --write_to_log 1 \
     --N 427 \
     --N_used 427 \
-    --RDIM $RDIM \
+    --RDIM 5 \
     --noise_level 0 \
     --rnn_cell_type gru \
     --unitary_cplex 1 \
@@ -29,7 +29,7 @@ do
     --scaler standard \
     --initializer xavier \
     --sequence_length $SL \
-    --hidden_state_propagation_length 70 \
+    --hidden_state_propagation_length $HSPL \
     --prediction_length $SL \
     --rnn_activation_str tanh \
     --rnn_num_layers $L \
@@ -43,7 +43,7 @@ do
     --overfitting_patience 20 \
     --training_min_epochs 1 \
     --learning_rate 0.001 \
-    --train_val_ratio 0.8 \
+    --train_val_ratio 0.7 \
     --it_pred_length 300 \
     --n_tests 3 \
     --retrain 0
