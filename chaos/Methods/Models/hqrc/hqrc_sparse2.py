@@ -493,8 +493,8 @@ class hqrc(object):
         self.__init_reservoir()
         
         train_input_sequence = self.scaler.scaleData(train_input_sequence)
-        pre_scaler = MinMaxScaler(feature_range=(0,1))
-        sparse_input_train = pre_scaler.fit_transform(sparse_input_train)
+        #pre_scaler = MinMaxScaler(feature_range=(0,1))
+        #sparse_input_train = pre_scaler.fit_transform(sparse_input_train)
         sparse_train = sparse_input_train @ self.W_sparse.T
         #pca = PCA(n_components=5)
         #sparse_train = pca.fit_transform(sparse_input_train)
@@ -604,7 +604,7 @@ class hqrc(object):
                     input_val = rep_train_input_seq[t]
                 else:
                     input_val = np.tile(out, (1, K))[0]
-                local_rhos = self.__step_forward(local_rhos, input_val,sparse_input[t])
+                local_rhos = self.__step_forward(local_rhos, input_val,sparse_input[t+dynamics_length])
             self.last_rhos = local_rhos.copy()
         else:
             # Because restart_alpha is set to 1.0
@@ -669,8 +669,8 @@ class hqrc(object):
         n_tests = self.n_tests
         input_sequence = self.scaler.scaleData(input_sequence,reuse=1) ##### reuse=1 omitted
         #sparse_input_sequence = self.sparse_scaler.scaleData(sparse_input_sequence)
-        pre_scaler = MinMaxScaler(feature_range=(0,1))
-        sparse_input_sequence = pre_scaler.fit_transform(sparse_input_sequence)
+        #pre_scaler = MinMaxScaler(feature_range=(0,1))
+        #sparse_input_sequence = pre_scaler.fit_transform(sparse_input_sequence)
         #print("sparse_input shape", sparse_input_sequence.shape)
         #print("W_sparse.shape",self.W_sparse.T.shape)
         sparse_input = sparse_input_sequence @ self.W_sparse.T

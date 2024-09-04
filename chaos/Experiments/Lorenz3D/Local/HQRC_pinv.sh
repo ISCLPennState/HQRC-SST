@@ -28,22 +28,26 @@ for ALPHA in 0.5
 do
 for BETA in 1e-7
 do
+for NQRC in 5
+do
+for nqubits in 6
+do
 python RUN.py hqrc \
     --mode all \
     --display_output 1 \
-    --system_name SST_sparse \
+    --system_name SST_sparse3 \
     --write_to_log 1 \
     --N 427 \
     --N_used 427 \
     --RDIM 5 \
     --noise_level 0 \
     --scaler MinMaxZeroOne \
-    --nqrc 5 \
+    --nqrc $NQRC \
     --alpha $ALPHA \
     --max_energy 2.0 \
     --virtual_nodes $V \
     --tau 4.0 \
-    --n_units 6 \
+    --n_units $nqubits \
     --reg $BETA \
     --dynamics_length 40 \
     --it_pred_length 300 \
@@ -53,7 +57,9 @@ python RUN.py hqrc \
     --augment 0 \
     --gamma 0.0 \
     --non_diag_var 1.0 \
-    --sparse 0.0
+    --sparse 0.9
+done
+done
 done
 done
 done

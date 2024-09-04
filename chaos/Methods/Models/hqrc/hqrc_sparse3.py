@@ -494,14 +494,14 @@ class hqrc(object):
         
         train_input_sequence = self.scaler.scaleData(train_input_sequence)
 
-        pre_scaler_std = StandardScaler()
-        sparse_input_train = pre_scaler_std.fit_transform(sparse_input_train)
-        pre_scaler_minmax = MinMaxScaler(feature_range=(0,1))
-        sparse_input_train = pre_scaler_minmax.fit_transform(sparse_input_train)
+        # pre_scaler_std = StandardScaler()
+        # sparse_input_train = pre_scaler_std.fit_transform(sparse_input_train)
+        # pre_scaler_minmax = MinMaxScaler(feature_range=(0,1))
+        # sparse_input_train = pre_scaler_minmax.fit_transform(sparse_input_train)
 
         pca = PCA(n_components=self.input_dim)
         sparse_train = pca.fit_transform(sparse_input_train)
-        sparse_train = pre_scaler_minmax.fit_transform(sparse_train)
+        #sparse_train = pre_scaler_minmax.fit_transform(sparse_train)
 
         sparse_train = np.dot(sparse_train,self.W_sparse)
         # Normalize the reduced array to the range [0, 1]
@@ -610,7 +610,7 @@ class hqrc(object):
                     input_val = rep_train_input_seq[t]
                 else:
                     input_val = np.tile(out, (1, K))[0]
-                local_rhos = self.__step_forward(local_rhos, input_val,sparse_input[t])
+                local_rhos = self.__step_forward(local_rhos, input_val,sparse_input[t+dynamics_length])
             self.last_rhos = local_rhos.copy()
         else:
             # Because restart_alpha is set to 1.0
@@ -675,14 +675,14 @@ class hqrc(object):
         n_tests = self.n_tests
         input_sequence = self.scaler.scaleData(input_sequence,reuse=1) ##### reuse=1 omitted
         #sparse_input_sequence = self.sparse_scaler.scaleData(sparse_input_sequence)
-        pre_scaler_std = StandardScaler()
-        sparse_input_sequence = pre_scaler_std.fit_transform(sparse_input_sequence)
-        pre_scaler_minmax = MinMaxScaler(feature_range=(0,1))
-        sparse_input_sequence = pre_scaler_minmax.fit_transform(sparse_input_sequence)
+        #pre_scaler_std = StandardScaler()
+        #sparse_input_sequence = pre_scaler_std.fit_transform(sparse_input_sequence)
+        #pre_scaler_minmax = MinMaxScaler(feature_range=(0,1))
+        #sparse_input_sequence = pre_scaler_minmax.fit_transform(sparse_input_sequence)
 
         pca = PCA(n_components=self.input_dim)
         sparse_input = pca.fit_transform(sparse_input_sequence)
-        sparse_input = pre_scaler_minmax.fit_transform(sparse_input)
+        #sparse_input = pre_scaler_minmax.fit_transform(sparse_input)
 
         sparse_input = np.dot(sparse_input,self.W_sparse)
         # Normalize the reduced array to the range [0, 1]

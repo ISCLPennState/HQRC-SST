@@ -1,0 +1,11 @@
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:102.80:total_training_time:18.13:n_model_parameters:22040:n_trainable_parameters:1560
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.74:total_training_time:18.54:n_model_parameters:22040:n_trainable_parameters:1560
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.93:total_training_time:15.59:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:107.01:total_training_time:13.90:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.59:total_training_time:20.29:n_model_parameters:22040:n_trainable_parameters:1560
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:107.00:total_training_time:21.82:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.84:total_training_time:20.47:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.62:total_training_time:20.17:n_model_parameters:22040:n_trainable_parameters:1560
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.64:total_training_time:15.21:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.34:total_training_time:14.16:n_model_parameters:22015:n_trainable_parameters:1535
+model_name:hqrc_logistic-RDIM_5-N_used_427-DL_40-Nqr_5-A_0.5-J_2.0-fJ_1-V_10-NL_0-IPL_300-IUL_0-REG_1e-07-AU_0-NICS_3:memory:106.64:total_training_time:14.57:n_model_parameters:21995:n_trainable_parameters:1515

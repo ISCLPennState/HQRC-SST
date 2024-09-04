@@ -30,7 +30,7 @@ def getModel(params):
 		import esn as model
 		return model.esn(params)
 	elif params["model_name"] == "hqrc":
-		import hqrc_sparse as model ###
+		import hqrc_sparse3 as model ###
 		return model.hqrc(params)
 	elif params["model_name"] == "hqrc_innate":
 		import hqrc_innate as model

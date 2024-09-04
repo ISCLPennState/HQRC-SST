@@ -342,7 +342,7 @@ def getHQRCParser(parser):
 
 	parser.add_argument("--nqrc", help="number of reservoirs", type=int, required=True)
 	parser.add_argument("--alpha", help="alpha", type=float, default=1.0)
-	parser.add_argument("--sparse", help="Sparse input strength", type=float,default=0.5)
+	parser.add_argument("--sparse", help="Sparse input strength", type=float,default=1.0)
 	parser.add_argument("--gamma", help="gamma", type=float, required=True)
 	parser.add_argument("--max_energy", help="max_energy", type=float, default=1.0)
 	parser.add_argument("--fix_coupling", help="fix coupling", type=int, default=1) ###
